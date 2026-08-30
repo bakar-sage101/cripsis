@@ -5,7 +5,7 @@
   "description": "Cripsis — The Infrastructure of Cognition. Next.js + NestJS monorepo.",
   "packageManager": "pnpm@9.12.3",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "dev": "turbo run dev",
