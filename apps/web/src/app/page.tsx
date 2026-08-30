@@ -6,7 +6,6 @@ import { TechTag } from '@/components/ui/TechTag';
 import { CRTMonitor } from '@/components/marketing/CRTMonitor';
 import { NodeRail } from '@/components/marketing/NodeRail';
 import { Blueprint } from '@/components/marketing/Blueprint';
-import { SignalField } from '@/components/marketing/SignalField';
 import { Reveal } from '@/components/marketing/Reveal';
 import { StatBand } from '@/components/marketing/StatBand';
 import { SignalTicker } from '@/components/marketing/SignalTicker';
@@ -30,24 +29,45 @@ export default function HomePage() {
       <SignalTicker />
 
       {/* ───────────────────────── HERO ───────────────────────── */}
-      <div className="relative overflow-hidden border-b border-line bg-[radial-gradient(1200px_560px_at_15%_-8%,rgba(22,169,214,0.12),transparent_60%)]">
+      <section className="relative flex min-h-[calc(100svh-150px)] items-center overflow-hidden border-b border-line bg-bg-0 py-16">
         <Blueprint dense />
-        <SignalField />
-        <Container className="relative z-10 py-20 lg:py-28">
+
+        {/* cinematic depth — glows + a few intentional signal blocks */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute right-[6%] top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(22,169,214,0.20),transparent_68%)] blur-[36px]" />
+          <div className="absolute -left-[8%] top-[6%] h-[340px] w-[340px] rounded-full bg-[radial-gradient(circle,rgba(104,216,255,0.10),transparent_70%)] blur-[44px]" />
+          <span className="signal-pulse absolute right-[3%] top-[14%] h-[16%] w-[9%] rounded-[3px] border border-[rgba(104,216,255,0.24)] bg-[linear-gradient(135deg,rgba(104,216,255,0.18),transparent)]" />
+          <span
+            className="signal-pulse absolute bottom-[16%] left-[4%] h-[13%] w-[6%] rounded-[3px] border border-line bg-[linear-gradient(135deg,rgba(22,169,214,0.12),transparent)]"
+            style={{ animationDelay: '1.6s' }}
+          />
+          <span
+            className="signal-pulse absolute bottom-[10%] right-[16%] h-[11%] w-[10%] rounded-[3px] border border-line bg-[linear-gradient(135deg,rgba(22,169,214,0.10),transparent)]"
+            style={{ animationDelay: '2.4s' }}
+          />
+        </div>
+
+        <Container className="relative z-10">
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
               <TechTag className="mb-5 block">~/cripsis — the control plane</TechTag>
               <Kicker>the infrastructure of cognition</Kicker>
-              <h1 className="mt-5 text-[clamp(44px,9vw,78px)] font-bold leading-[1.02] tracking-[-0.03em]">
-                Own the intelligence your business runs on.
+              <h1 className="mt-6 text-[clamp(46px,9.5vw,84px)] font-bold leading-[0.98] tracking-[-0.035em]">
+                Own the intelligence{' '}
+                <span className="text-muted">your business runs on.</span>
               </h1>
-              <p className="mt-6 max-w-[520px] text-[18.5px] text-body">
+              <p className="mt-7 max-w-[520px] text-[18.5px] leading-[1.6] text-body">
                 A dedicated AI operating environment that learns how your organization
                 actually works — then keeps that intelligence as your asset, under your
                 control.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-5">
-                <Button href="/design-partners">Become a design partner →</Button>
+                <Button
+                  href="/design-partners"
+                  className="shadow-[0_0_30px_rgba(104,216,255,0.30)]"
+                >
+                  Become a design partner →
+                </Button>
                 <a
                   href="#how"
                   className="font-mono text-[13.5px] text-muted hover:text-accent"
@@ -55,22 +75,40 @@ export default function HomePage() {
                   see how it works ↓
                 </a>
               </div>
-              <div className="mt-7 inline-flex items-center gap-2 rounded-[3px] border border-line bg-bg-0 px-4 py-2.5 font-mono text-[13px] text-body">
+              <div className="mt-7 inline-flex items-center gap-2 rounded-[3px] border border-line bg-[rgba(2,6,8,0.8)] px-4 py-2.5 font-mono text-[13px] text-body backdrop-blur-sm">
                 <span className="text-accent">❯</span> cripsis observe --live
                 <span className="blink">▍</span>
               </div>
             </div>
 
-            <CRTMonitor>
-              <LiveTerminal
-                lines={heroTerminal}
-                lineDelay={380}
-                className="text-[11px] leading-[1.72]"
-              />
-            </CRTMonitor>
+            {/* console centerpiece — on a glow stage, gently floating */}
+            <div className="relative">
+              <div className="floaty">
+                <CRTMonitor>
+                  <LiveTerminal
+                    lines={heroTerminal}
+                    lineDelay={380}
+                    className="text-[11px] leading-[1.72]"
+                  />
+                </CRTMonitor>
+              </div>
+              <div className="mt-4 text-center font-mono text-[11.5px] text-muted">
+                <span className="text-accent">●</span> live session · cripsis@enterprise
+              </div>
+            </div>
           </div>
         </Container>
-      </div>
+
+        {/* scroll cue */}
+        <a
+          href="#how"
+          aria-label="Scroll to how it works"
+          className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 font-mono text-[11px] tracking-[0.2em] text-muted hover:text-accent lg:flex"
+        >
+          SCROLL
+          <span className="blink text-accent">↓</span>
+        </a>
+      </section>
 
       {/* ─────────────────── 01 · THE TENSION ─────────────────── */}
       <Section tone="bg-1" signal>

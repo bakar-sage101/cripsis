@@ -10,7 +10,6 @@ export function CRTMonitor({ children }: { children: React.ReactNode }) {
         src={crt}
         alt="Cripsis running on a monitor"
         priority
-        placeholder="blur"
         sizes="(max-width: 1024px) 90vw, 540px"
         className="block h-auto w-full"
       />
