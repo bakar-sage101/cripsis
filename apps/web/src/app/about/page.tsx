@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/layout/Container';
-import { Section } from '@/components/marketing/Section';
 import { Blueprint } from '@/components/marketing/Blueprint';
 import { SignalField } from '@/components/marketing/SignalField';
-import { PullQuote } from '@/components/marketing/PullQuote';
-import { CtaBand } from '@/components/marketing/CtaBand';
+import { DocSection } from '@/components/marketing/DocSection';
 import { OwnershipBoundary } from '@/components/marketing/OwnershipBoundary';
+import { CtaBand } from '@/components/marketing/CtaBand';
 import { Button } from '@/components/ui/Button';
-import { Kicker } from '@/components/ui/Kicker';
-import { TechTag } from '@/components/ui/TechTag';
 import { Reveal } from '@/components/marketing/Reveal';
+import { cn } from '@/lib/cn';
 import {
   doctrine,
   principles,
@@ -27,71 +25,71 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* HERO */}
-      <div className="relative overflow-hidden border-b border-line bg-[radial-gradient(1000px_460px_at_22%_-10%,rgba(22,169,214,0.12),transparent_60%)]">
+      {/* MASTHEAD */}
+      <div className="relative overflow-hidden border-b border-line bg-[radial-gradient(1000px_460px_at_20%_-10%,rgba(22,169,214,0.12),transparent_60%)]">
         <Blueprint dense />
         <SignalField />
-        <Container className="relative z-10 py-20 sm:py-24">
-          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <TechTag className="mb-5 block">~/cripsis/about</TechTag>
-              <Kicker>the doctrine</Kicker>
-              <h1 className="mt-5 max-w-[680px] text-[clamp(38px,7vw,60px)] font-bold tracking-[-0.03em]">
-                Intelligence should belong to the enterprise that creates it.
-              </h1>
-              <p className="mt-6 max-w-[600px] text-[18px] text-body">
-                Organizations are told they must surrender their operating knowledge to
-                get the benefits of AI. Cripsis is built on the opposite premise: your
-                intelligence is infrastructure, and infrastructure should be owned.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Button href="/design-partners">Become a design partner →</Button>
-                <Button href="/platform" variant="ghost">
-                  See the platform ↓
-                </Button>
-              </div>
-            </div>
-            <OwnershipBoundary />
+        <Container className="relative z-10 py-24 sm:py-28">
+          <div className="font-mono text-[13px] uppercase tracking-[0.22em] text-muted">
+            [ about ]
+          </div>
+          <h1 className="mt-6 max-w-[920px] text-[clamp(36px,6.5vw,64px)] font-bold leading-[1.06] tracking-[-0.03em] text-muted">
+            Intelligence should belong to{' '}
+            <span className="text-heading">the enterprise that creates it.</span>
+          </h1>
+          <div className="mt-8 inline-flex items-center gap-2 rounded-[3px] border border-line bg-bg-0 px-4 py-2.5 font-mono text-[12.5px] text-muted">
+            <span className="text-accent">{'//'}</span> now selecting founding design
+            partners
           </div>
         </Container>
       </div>
 
-      {/* THREE TENETS */}
-      <Section tone="bg-1" signal>
-        <Kicker>the tenets</Kicker>
-        <h2 className="mt-[18px] text-[clamp(26px,4vw,32px)]">Three commitments.</h2>
-        <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {doctrine.map((d, i) => (
-            <Reveal
-              key={d.label}
-              delay={i * 80}
-              className="relative h-full overflow-hidden rounded-[6px] border border-line bg-bg-2 p-6"
-            >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-1 -top-3 font-display text-[80px] font-bold leading-none tracking-[-0.04em] text-accent/[0.06]"
-              >
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div className="relative">
-                <div className="font-mono text-[12px] uppercase tracking-[0.14em] text-muted">
-                  {d.label}
-                </div>
-                <h3 className="mt-3 text-[19px]">{d.title}</h3>
-                <p className="mt-2.5 text-[14px] text-body">{d.body}</p>
-              </div>
-            </Reveal>
-          ))}
+      {/* MISSION */}
+      <DocSection label="mission" tone="bg-0">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <p className="text-[clamp(21px,3vw,30px)] font-medium leading-[1.32] tracking-[-0.01em] text-muted">
+            Cripsis exists so intelligence{' '}
+            <span className="text-heading">belongs to the enterprise that creates it.</span>{' '}
+            We build the operating environment that{' '}
+            <span className="text-heading">observes</span> real work,{' '}
+            <span className="text-heading">learns</span> it,{' '}
+            <span className="text-heading">governs</span> it, and{' '}
+            <span className="text-heading">keeps</span> it — inside your walls, under your
+            authority.
+          </p>
+          <OwnershipBoundary />
         </div>
-      </Section>
+      </DocSection>
 
-      {/* DEFAULT vs CRIPSIS */}
-      <Section tone="bg-0">
-        <Kicker>the choice</Kicker>
-        <h2 className="mt-[18px] max-w-[560px] text-[clamp(26px,4vw,32px)]">
-          Surrender, or ownership.
+      {/* TENETS */}
+      <DocSection label="tenets" tone="bg-1" signal>
+        {doctrine.map((d, i) => (
+          <Reveal
+            key={d.label}
+            delay={i * 60}
+            className={cn(
+              'grid gap-3 py-7 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10',
+              i > 0 && 'border-t border-line',
+            )}
+          >
+            <div>
+              <div className="font-mono text-[12px] text-accent">
+                {'//'} {d.label.toLowerCase()}
+              </div>
+              <h3 className="mt-2 text-[clamp(20px,2.6vw,26px)]">{d.title}</h3>
+            </div>
+            <p className="self-center text-[15.5px] text-body">{d.body}</p>
+          </Reveal>
+        ))}
+      </DocSection>
+
+      {/* THE CHOICE */}
+      <DocSection label="the choice" tone="bg-0">
+        <h2 className="max-w-[600px] text-[clamp(24px,3.6vw,32px)] leading-[1.15] text-muted">
+          <span className="text-heading">Surrender</span>, or{' '}
+          <span className="text-heading">ownership</span>.
         </h2>
-        <div className="mt-10 grid grid-cols-1 gap-[18px] md:grid-cols-2">
+        <div className="mt-9 grid grid-cols-1 gap-[18px] md:grid-cols-2">
           <div className="rounded-[6px] border border-line bg-bg-2 p-6">
             <div className="font-mono text-[12px] tracking-[0.14em] text-muted">
               THE DEFAULT &nbsp;·&nbsp; surrender
@@ -119,48 +117,34 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </Section>
+      </DocSection>
 
-      {/* PULL-QUOTE */}
-      <PullQuote kicker="the doctrine">
-        Your intelligence is infrastructure — and infrastructure should be owned.
-      </PullQuote>
+      {/* PRINCIPLES */}
+      <DocSection label="principles" tone="bg-1" signal>
+        {principles.map((p, i) => (
+          <Reveal
+            key={p.tag}
+            delay={(i % 2) * 60}
+            className={cn(
+              'grid gap-3 py-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10',
+              i > 0 && 'border-t border-line',
+            )}
+          >
+            <div>
+              <div className="font-mono text-[12px] text-accent">{'//'} {p.tag}</div>
+              <h3 className="mt-2 text-[20px]">{p.title}</h3>
+            </div>
+            <p className="self-center text-[14.5px] text-body">{p.body}</p>
+          </Reveal>
+        ))}
+      </DocSection>
 
-      {/* THE CONSTITUTION (principles) */}
-      <Section tone="bg-1" signal>
-        <Kicker>principles</Kicker>
-        <h2 className="mt-[18px] text-[clamp(26px,4vw,32px)]">How Cripsis is built.</h2>
-        <div className="mt-9 border-l border-t border-line">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {principles.map((p, i) => (
-              <Reveal
-                key={p.tag}
-                delay={(i % 3) * 70}
-                className="relative overflow-hidden border-b border-r border-line p-6"
-              >
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -right-1 -top-2 font-display text-[64px] font-bold leading-none text-accent/[0.05]"
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="relative">
-                  <div className="font-mono text-[11px] text-accent">{p.tag}</div>
-                  <h3 className="mt-2 text-[16px]">{p.title}</h3>
-                  <p className="mt-2 text-[13px] text-body">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* FOUNDING TEAM */}
-      <Section tone="bg-0">
-        <Kicker>founding team</Kicker>
-        <h2 className="mt-[18px] text-[clamp(26px,4vw,32px)]">
-          Built by operators and engineers.
-        </h2>
+      {/* TEAM */}
+      <DocSection label="team" tone="bg-0">
+        <p className="max-w-[560px] text-[16.5px] text-body">
+          The team behind Cripsis. Operators and engineers building the control layer —
+          high agency, ownership-first, shipping daily.
+        </p>
         <div className="mt-9 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m, i) => (
             <Reveal key={m.slug} delay={i * 80} className="h-full">
@@ -183,7 +167,7 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-      </Section>
+      </DocSection>
 
       <CtaBand title="Own the control layer.">
         <Button href="/design-partners">Become a design partner →</Button>
