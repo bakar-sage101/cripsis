@@ -23,20 +23,7 @@ import {
   economicsChain,
   faq,
   heroTerminal,
-  todayTerminal,
-  cripsisTerminal,
 } from '@/content/home';
-
-/** Terminal-window dots. */
-function Dots({ live }: { live?: boolean }) {
-  return (
-    <div className="flex items-center gap-[7px]">
-      <span className={`h-[9px] w-[9px] rounded-full ${live ? 'bg-accent' : 'bg-accent-dim'}`} />
-      <span className="h-[9px] w-[9px] rounded-full bg-accent-dim" />
-      <span className="h-[9px] w-[9px] rounded-full bg-accent-dim" />
-    </div>
-  );
-}
 
 export default function HomePage() {
   return (
@@ -85,14 +72,15 @@ export default function HomePage() {
       </div>
 
       {/* NODE RAIL */}
-      <div className="border-b border-line bg-bg-1">
-        <Container className="pb-14 pt-16">
+      <div className="relative overflow-hidden border-b border-line bg-bg-1">
+        <Blueprint />
+        <Container className="relative z-10 pb-14 pt-16">
           <NodeRail nodes={railNodes} />
         </Container>
       </div>
 
       {/* OVERVIEW / FEATURE MATRIX */}
-      <Section tone="bg-0">
+      <Section tone="bg-0" signal>
         <Kicker>the operating environment</Kicker>
         <h2 className="mt-[18px] max-w-[680px] text-[40px]">
           Not a chatbot. Not RPA. A system that learns your operation.
@@ -135,7 +123,7 @@ export default function HomePage() {
       </PullQuote>
 
       {/* THREE PLANES + SIGNATURE DIAGRAM */}
-      <Section tone="bg-1">
+      <Section tone="bg-1" signal>
         <div className="grid grid-cols-1 items-center gap-13 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[52px]">
           <div>
             <Kicker>the system</Kicker>
@@ -227,58 +215,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* CONTRAST — dueling live terminals */}
-      <Section tone="bg-1">
-        <Kicker>from reactive to anticipatory</Kicker>
-        <h2 className="mt-[18px] max-w-[560px] text-[40px]">
-          Don’t wait for the work to fail.
-        </h2>
-        <div className="mt-10 grid grid-cols-1 gap-[18px] md:grid-cols-2">
-          {/* TODAY */}
-          <div className="overflow-hidden rounded-[6px] border border-line bg-bg-2">
-            <div className="flex items-center gap-[7px] border-b border-line bg-bg-0 px-4 py-3">
-              <Dots />
-              <span className="ml-1 font-mono text-[11.5px] text-muted">ops@today ~ %</span>
-            </div>
-            <div className="p-5">
-              <div className="mb-3 font-mono text-[11.5px] tracking-[0.12em] text-muted">
-                TODAY · reactive · person-dependent
-              </div>
-              <LiveTerminal
-                lines={todayTerminal}
-                lineDelay={420}
-                className="text-[12.5px] leading-[1.95]"
-              />
-            </div>
-          </div>
-
-          {/* CRIPSIS */}
-          <div className="crt-flicker overflow-hidden rounded-[6px] border border-line-strong bg-[linear-gradient(180deg,rgba(22,169,214,0.06),var(--color-bg-2))] shadow-[0_0_30px_rgba(104,216,255,0.07)]">
-            <div className="flex items-center gap-[7px] border-b border-line bg-bg-0 px-4 py-3">
-              <Dots live />
-              <span className="ml-1 font-mono text-[11.5px] text-muted">
-                cripsis@enterprise ~ %
-              </span>
-            </div>
-            <div className="relative p-5">
-              <div className="scanlines pointer-events-none absolute inset-0" aria-hidden />
-              <div className="relative">
-                <div className="mb-3 font-mono text-[11.5px] tracking-[0.12em] text-accent">
-                  CRIPSIS · anticipate · recommend · delegate
-                </div>
-                <LiveTerminal
-                  lines={cripsisTerminal}
-                  lineDelay={420}
-                  className="text-[12.5px] leading-[1.95]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
       {/* ECONOMICS */}
-      <Section tone="bg-0">
+      <Section tone="bg-0" signal>
         <Kicker>the economics</Kicker>
         <h2 className="mt-[18px] max-w-[560px] text-[40px]">
           Saving seconds is just the start.
@@ -347,8 +285,9 @@ export default function HomePage() {
       </Section>
 
       {/* FINAL CTA */}
-      <div className="border-b border-line bg-[linear-gradient(180deg,var(--color-bg-1),var(--color-bg-0))]">
-        <Container className="py-[104px] text-center">
+      <div className="relative overflow-hidden border-b border-line bg-[linear-gradient(180deg,var(--color-bg-1),var(--color-bg-0))]">
+        <Blueprint />
+        <Container className="relative z-10 py-[104px] text-center">
           <Kicker className="text-center">start with one workflow</Kicker>
           <h2 className="mt-[18px] text-[clamp(32px,6vw,46px)]">
             Choose the workflow that costs you

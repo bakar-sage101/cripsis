@@ -9,9 +9,8 @@ type Block = {
   delay?: string;
 };
 
-/** Positions echo a schematic block-field; kept to the right/edges so hero text
- *  stays clear. A few blocks glow brighter and pulse. */
-const blocks: Block[] = [
+/** Hero block-field — denser, kept to the right/edges so hero text stays clear. */
+const heroBlocks: Block[] = [
   { top: '4%', left: '62%', w: '10%', h: '9%', delay: '0s' },
   { top: '2%', left: '86%', w: '11%', h: '11%', bright: true, delay: '1.2s' },
   { top: '20%', left: '74%', w: '9%', h: '8%', delay: '2.1s' },
@@ -22,11 +21,34 @@ const blocks: Block[] = [
   { top: '12%', left: '4%', w: '6%', h: '7%', delay: '3.1s' },
 ];
 
-/** Decorative cyan "signal blocks" tiled on the blueprint grid — fills hero
- *  negative space with energy. Purely decorative. */
-export function SignalField({ className }: { className?: string }) {
+/** Ambient field — sparse, edge-hugging blocks that keep section backgrounds
+ *  alive without crowding centered content. */
+const ambientBlocks: Block[] = [
+  { top: '14%', left: '90%', w: '7%', h: '30%', delay: '0.4s' },
+  { top: '58%', left: '2%', w: '5%', h: '34%', delay: '2.2s' },
+  { top: '70%', left: '93%', w: '6%', h: '22%', bright: true, delay: '1.4s' },
+  { top: '4%', left: '3%', w: '4%', h: '18%', delay: '3.0s' },
+];
+
+/** Decorative cyan "signal blocks" tiled on the blueprint grid. `hero` fills the
+ *  hero; `ambient` keeps sections from reading as flat black. Purely decorative. */
+export function SignalField({
+  variant = 'hero',
+  className,
+}: {
+  variant?: 'hero' | 'ambient';
+  className?: string;
+}) {
+  const blocks = variant === 'hero' ? heroBlocks : ambientBlocks;
   return (
-    <div aria-hidden className={cn('pointer-events-none absolute inset-0 z-0', className)}>
+    <div
+      aria-hidden
+      className={cn(
+        'pointer-events-none absolute inset-0 z-0',
+        variant === 'ambient' && 'opacity-60',
+        className,
+      )}
+    >
       {blocks.map((b, i) => (
         <span
           key={i}
