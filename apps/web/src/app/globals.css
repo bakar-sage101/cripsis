@@ -1,41 +1,187 @@
-:root {
-  /* Cripsis brand tokens — from the Workbench shell palette */
-  --bg-0: #020608;
-  --bg-1: #040b10;
-  --bg-2: #07131a;
-  --blue-dim: #0c5f7d;
-  --blue-mid: #16a9d6;
-  --blue-bright: #68d8ff;
-  --text-bright: #d9f5ff;
-  --text-main: rgba(104, 216, 255, 0.88);
-  --text-muted: #4fa9c8;
-  --white: #ffffff;
-  --border: rgba(22, 169, 214, 0.22);
+@import 'tailwindcss';
+
+/*
+ * Cripsis brand tokens exposed to Tailwind v4.
+ * Colors -> utilities like `bg-bg-0`, `text-accent`, `border-line`.
+ * Fonts reference the next/font CSS variables set in layout.tsx.
+ */
+@theme {
+  /* backgrounds */
+  --color-bg-0: #020608;
+  --color-bg-1: #040b10;
+  --color-bg-2: #07131a;
+
+  /* cyan accent scale */
+  --color-accent-dim: #0c5f7d;
+  --color-accent-mid: #16a9d6;
+  --color-accent: #68d8ff;
+
+  /* text */
+  --color-heading: #d9f5ff;
+  --color-body: rgba(104, 216, 255, 0.88);
+  --color-muted: #4fa9c8;
+
+  /* lines / borders */
+  --color-line: rgba(22, 169, 214, 0.22);
+  --color-line-strong: rgba(22, 169, 214, 0.5);
+
+  /* typography (next/font variables) */
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg-0);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    color: var(--color-heading);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  a {
+    color: var(--color-accent-mid);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  ::selection {
+    background: rgba(104, 216, 255, 0.24);
+    color: var(--color-heading);
+  }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
+/* ---------------------------------------------------------------------------
+ * Bespoke motion / effects ported from the design (design/*.dc.html).
+ * Kept as plain CSS because the keyframes are verbose and one-off.
+ * ------------------------------------------------------------------------- */
+
+/* blinking terminal cursor */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+.blink {
+  display: inline-block;
+  color: var(--color-accent);
+  text-shadow: 0 0 6px rgba(104, 216, 255, 0.7);
+  animation: blink 1.05s steps(1, end) infinite;
 }
 
-body {
-  background: var(--bg-0);
-  color: var(--text-main);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+/* CRT brightness flicker */
+@keyframes crtflicker {
+  0%,
+  94%,
+  100% {
+    filter: none;
+  }
+  95% {
+    filter: brightness(1.07);
+  }
+  96% {
+    filter: brightness(0.96);
+  }
+  97% {
+    filter: brightness(1.04);
+  }
+  98% {
+    filter: brightness(0.985);
+  }
+}
+.crt-flicker {
+  animation: crtflicker 7s linear infinite;
 }
 
-a {
-  color: var(--blue-mid);
-  text-decoration: none;
+/* faint scanlines overlay (use on a positioned parent) */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(104, 216, 255, 0.035) 0 1px,
+    transparent 1px 3px
+  );
+  pointer-events: none;
 }
 
-a:hover {
-  color: var(--blue-bright);
+/* pulsing halo around the active rail node */
+@keyframes halo {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.halo::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 9999px;
+  border: 1px solid rgba(104, 216, 255, 0.4);
+  animation: halo 2.8s ease-out infinite;
+}
+
+/* light traveling along the node rail */
+@keyframes travel {
+  0% {
+    left: -64px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.rail-travel::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  width: 64px;
+  height: 3px;
+  border-radius: 2px;
+  filter: blur(1px);
+  background: linear-gradient(90deg, transparent, rgba(104, 216, 255, 0.9), transparent);
+  animation: travel 5.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink,
+  .crt-flicker,
+  .halo::before,
+  .rail-travel::after {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
