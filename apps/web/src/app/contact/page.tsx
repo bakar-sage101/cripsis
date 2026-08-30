@@ -35,6 +35,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
+        tag="~/cripsis/contact"
         kicker="contact"
         title="Tell us the workflow that costs you most when it fails."
         subtitle="A member of the team replies with a tailored path — baseline, instrument, measure. Start narrow; expand once it’s proven."

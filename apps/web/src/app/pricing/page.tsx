@@ -4,6 +4,7 @@ import { Container } from '@/components/layout/Container';
 import { PageHero } from '@/components/marketing/PageHero';
 import { Button } from '@/components/ui/Button';
 import { Kicker } from '@/components/ui/Kicker';
+import { Reveal } from '@/components/marketing/Reveal';
 import { cn } from '@/lib/cn';
 import { tiers, inEveryPlan, pricingFaq } from '@/content/pricing';
 
@@ -17,6 +18,7 @@ export default function PricingPage() {
   return (
     <>
       <PageHero
+        tag="~/cripsis/pricing"
         kicker="pricing"
         title="A dedicated environment for every team size."
         subtitle="Every plan is a dedicated Cripsis environment — your own resident AI, your own intelligence. Persistent enterprise AI without shared customer intelligence or commodity SaaS dependence."
@@ -26,11 +28,11 @@ export default function PricingPage() {
       {/* TIER CARDS */}
       <Container className="pt-11">
         <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-          {tiers.map((tier) => (
+          {tiers.map((tier, i) => (
+            <Reveal key={tier.name} delay={i * 80} className="h-full">
             <div
-              key={tier.name}
               className={cn(
-                'flex flex-col rounded-[5px] border bg-bg-2 p-6 transition-[border-color,transform,box-shadow] duration-[250ms] hover:-translate-y-[3px] hover:border-line-strong hover:shadow-[0_10px_30px_rgba(2,6,8,0.55),0_0_22px_rgba(104,216,255,0.07)]',
+                'flex h-full flex-col rounded-[5px] border bg-bg-2 p-6 transition-[border-color,transform,box-shadow] duration-[250ms] hover:-translate-y-[3px] hover:border-line-strong hover:shadow-[0_10px_30px_rgba(2,6,8,0.55),0_0_22px_rgba(104,216,255,0.07)]',
                 tier.popular
                   ? 'border-line-strong bg-[linear-gradient(180deg,rgba(22,169,214,0.06),var(--color-bg-2))]'
                   : 'border-line',
@@ -75,6 +77,7 @@ export default function PricingPage() {
                 ))}
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </Container>

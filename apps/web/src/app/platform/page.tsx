@@ -4,6 +4,7 @@ import { PageHero } from '@/components/marketing/PageHero';
 import { CtaBand } from '@/components/marketing/CtaBand';
 import { Tile } from '@/components/ui/Tile';
 import { Button } from '@/components/ui/Button';
+import { Reveal } from '@/components/marketing/Reveal';
 import { platformChips, platformBlocks } from '@/content/platform';
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function PlatformPage() {
   return (
     <>
       <PageHero
+        tag="~/cripsis/platform"
         kicker="the platform"
         title="Everything the enterprise needs to own its intelligence."
         subtitle="One environment that observes, learns, remembers, governs, and operates — with clean boundaries between what thinks, what knows, and what is allowed."
@@ -55,29 +57,39 @@ export default function PlatformPage() {
         {platformBlocks.map((block) => (
           <section
             key={block.index}
-            className="border-t border-line py-14 first:border-t-0"
+            className="relative overflow-hidden border-t border-line py-14 first:border-t-0"
           >
-            <div className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
-              {block.index} · {block.category}
-            </div>
-            <h2 className="mt-3 text-[clamp(26px,4vw,32px)]">{block.title}</h2>
-            <p className="mt-3.5 max-w-[680px] text-[16.5px] text-body">{block.sub}</p>
-            <div
-              className={`mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 ${
-                block.cols === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
-              }`}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -top-2 right-0 font-display text-[clamp(84px,14vw,150px)] font-bold leading-none tracking-[-0.04em] text-accent/[0.06]"
             >
-              {block.items.map((item, i) => (
-                <Tile key={i}>
-                  {item.eyebrow ? <Eyebrow text={item.eyebrow} /> : null}
-                  {item.title ? (
-                    <h3 className={`text-[17px] text-heading ${item.eyebrow ? 'mt-3' : ''}`}>
-                      {item.title}
-                    </h3>
-                  ) : null}
-                  <p className="mt-2.5 text-[14px] text-body">{item.body}</p>
-                </Tile>
-              ))}
+              {block.index}
+            </span>
+            <div className="relative">
+              <div className="font-mono text-[12px] uppercase tracking-[0.16em] text-muted">
+                {block.index} · {block.category}
+              </div>
+              <h2 className="mt-3 text-[clamp(26px,4vw,32px)]">{block.title}</h2>
+              <p className="mt-3.5 max-w-[680px] text-[16.5px] text-body">{block.sub}</p>
+              <Reveal
+                className={`mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 ${
+                  block.cols === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+                }`}
+              >
+                {block.items.map((item, i) => (
+                  <Tile key={i}>
+                    {item.eyebrow ? <Eyebrow text={item.eyebrow} /> : null}
+                    {item.title ? (
+                      <h3
+                        className={`text-[17px] text-heading ${item.eyebrow ? 'mt-3' : ''}`}
+                      >
+                        {item.title}
+                      </h3>
+                    ) : null}
+                    <p className="mt-2.5 text-[14px] text-body">{item.body}</p>
+                  </Tile>
+                ))}
+              </Reveal>
             </div>
           </section>
         ))}

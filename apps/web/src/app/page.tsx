@@ -2,10 +2,14 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/marketing/Section';
 import { Button } from '@/components/ui/Button';
 import { Kicker } from '@/components/ui/Kicker';
+import { TechTag } from '@/components/ui/TechTag';
 import { Tile } from '@/components/ui/Tile';
 import { CRTMonitor } from '@/components/marketing/CRTMonitor';
 import { NodeRail } from '@/components/marketing/NodeRail';
 import { DemoCard } from '@/components/marketing/DemoCard';
+import { Blueprint } from '@/components/marketing/Blueprint';
+import { Reveal } from '@/components/marketing/Reveal';
+import { StatBand } from '@/components/marketing/StatBand';
 import {
   railNodes,
   featureTiles,
@@ -23,12 +27,14 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <div className="relative overflow-hidden border-b border-line bg-[radial-gradient(1200px_560px_at_15%_-8%,rgba(22,169,214,0.12),transparent_60%)]">
-        <div className="scanlines pointer-events-none absolute inset-0" aria-hidden />
-        <Container className="relative py-20 lg:py-24">
+        <Blueprint />
+        <div className="scanlines pointer-events-none absolute inset-0 z-0" aria-hidden />
+        <Container className="relative z-10 py-20 lg:py-24">
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
+              <TechTag className="mb-5 block">~/cripsis — the control plane</TechTag>
               <Kicker>the infrastructure of cognition</Kicker>
-              <h1 className="mt-5 text-[clamp(40px,8vw,66px)]">
+              <h1 className="mt-5 text-[clamp(44px,9vw,76px)] font-bold tracking-[-0.03em]">
                 Own the intelligence your business runs on.
               </h1>
               <p className="mt-6 max-w-[520px] text-[18.5px] text-body">
@@ -103,8 +109,10 @@ export default function HomePage() {
           determine the authority.
         </p>
         <div className="mt-11 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featureTiles.map((t) => (
-            <Tile key={t.num} num={t.num} title={t.title} body={t.body} />
+          {featureTiles.map((t, i) => (
+            <Reveal key={t.num} delay={(i % 3) * 80} className="h-full">
+              <Tile num={t.num} title={t.title} body={t.body} className="h-full" />
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -306,6 +314,22 @@ export default function HomePage() {
               <p className="text-[15px] text-body">{item.a}</p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* TRUST MATRIX */}
+      <Section tone="bg-1">
+        <Kicker>trust, by construction</Kicker>
+        <h2 className="mt-[18px] max-w-[560px] text-[clamp(30px,5vw,40px)]">
+          Guarantees, not promises.
+        </h2>
+        <p className="mt-5 max-w-[680px] text-[18.5px] text-body">
+          The control plane is deterministic. Authority is explicit, denials win, and
+          every action leaves a receipt — by construction, not by policy you have to
+          trust.
+        </p>
+        <div className="mt-10">
+          <StatBand />
         </div>
       </Section>
 

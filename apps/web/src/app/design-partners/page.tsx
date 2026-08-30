@@ -5,6 +5,7 @@ import { CtaBand } from '@/components/marketing/CtaBand';
 import { Tile } from '@/components/ui/Tile';
 import { Button } from '@/components/ui/Button';
 import { Kicker } from '@/components/ui/Kicker';
+import { Reveal } from '@/components/marketing/Reveal';
 import { proves, engagement, partnerReceives } from '@/content/design-partners';
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function DesignPartnersPage() {
   return (
     <>
       <PageHero
+        tag="~/cripsis/design-partners"
         kicker="founding design partners"
         title="Start with one workflow."
         subtitle="Cripsis is working with a small number of founding design partners to shape early production deployments. One high-value workflow, ninety days, measurable outcomes — then expand from a validated foundation."
@@ -60,7 +62,7 @@ export default function DesignPartnersPage() {
           <h2 className="mt-4 text-[clamp(26px,4vw,32px)]">
             Cripsis learns from the bottom up.
           </h2>
-          <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <Reveal className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-3">
             {proves.map((p) => (
               <Tile key={p.label}>
                 <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
@@ -70,7 +72,7 @@ export default function DesignPartnersPage() {
                 <p className="mt-2.5 text-[14px] text-body">{p.body}</p>
               </Tile>
             ))}
-          </div>
+          </Reveal>
         </Container>
       </div>
 
@@ -84,18 +86,21 @@ export default function DesignPartnersPage() {
         </p>
         <div className="mt-9 flex flex-col">
           {engagement.map((e, i) => (
-            <div
+            <Reveal
               key={e.step}
-              className={`grid grid-cols-[56px_1fr] gap-6 border-t border-line py-[22px] sm:grid-cols-[80px_1fr] ${
+              delay={i * 60}
+              className={`grid grid-cols-[56px_1fr] gap-6 border-t border-line py-[22px] sm:grid-cols-[92px_1fr] ${
                 i === engagement.length - 1 ? 'border-b' : ''
               }`}
             >
-              <div className="font-mono text-[22px] text-accent">{e.step}</div>
+              <div className="font-display text-[clamp(30px,5vw,42px)] font-bold leading-none tracking-[-0.03em] text-accent/80">
+                {e.step}
+              </div>
               <div>
                 <h3 className="text-[18px]">{e.title}</h3>
                 <p className="mt-2 text-[14.5px] text-body">{e.body}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Container>
@@ -107,7 +112,7 @@ export default function DesignPartnersPage() {
           <h2 className="mt-4 text-[clamp(26px,4vw,32px)]">
             Founder-level access, on real capability.
           </h2>
-          <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {partnerReceives.map((p) => (
               <Tile key={p.label}>
                 <div className="font-mono text-[12px] uppercase text-accent">
@@ -116,7 +121,7 @@ export default function DesignPartnersPage() {
                 <p className="mt-3 text-[14px] text-body">{p.body}</p>
               </Tile>
             ))}
-          </div>
+          </Reveal>
         </Container>
       </div>
 
