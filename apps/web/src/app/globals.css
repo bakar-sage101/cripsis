@@ -222,6 +222,20 @@
   animation: marquee 34s linear infinite;
 }
 
+/* gentle console float (hero centerpiece) */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+.floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blink,
   .crt-flicker,
@@ -229,7 +243,8 @@
   .rail-travel::after,
   .signal-pulse,
   .travel-y,
-  .marquee-track {
+  .marquee-track,
+  .floaty {
     animation: none;
   }
   html {
