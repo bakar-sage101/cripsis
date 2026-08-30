@@ -1,5 +1,6 @@
 export type Tier = {
   name: string;
+  slug: string;
   price: string;
   seats: string;
   blurb: string;
@@ -10,6 +11,7 @@ export type Tier = {
 export const tiers: Tier[] = [
   {
     name: 'Office',
+    slug: 'office',
     price: '$1,495',
     seats: 'up to 3 operators',
     blurb:
@@ -23,6 +25,7 @@ export const tiers: Tier[] = [
   },
   {
     name: 'Business',
+    slug: 'business',
     price: '$2,995',
     seats: 'up to 10 operators',
     blurb:
@@ -36,6 +39,7 @@ export const tiers: Tier[] = [
   },
   {
     name: 'Pro',
+    slug: 'pro',
     price: '$4,995',
     seats: 'up to 20 operators',
     popular: true,
@@ -50,6 +54,7 @@ export const tiers: Tier[] = [
   },
   {
     name: 'Pro+',
+    slug: 'pro-plus',
     price: '$6,995',
     seats: 'up to 30 operators',
     blurb:
@@ -62,6 +67,26 @@ export const tiers: Tier[] = [
     ],
   },
 ];
+
+/** Tier comparison matrix (the "spec sheet"). Values render verbatim;
+ *  '✓' / '–' get accent / muted styling in the table. */
+export const comparison: {
+  columns: string[];
+  popularIndex: number;
+  rows: { label: string; values: string[] }[];
+} = {
+  columns: ['Office', 'Business', 'Pro', 'Pro+'],
+  popularIndex: 2,
+  rows: [
+    { label: 'Operators', values: ['3', '10', '20', '30'] },
+    { label: 'Dedicated compute', values: ['✓', 'high-perf', 'expanded', 'multi-GPU'] },
+    { label: 'Proactive agent', values: ['–', '✓', '✓', '✓'] },
+    { label: 'Integrations', values: ['–', '✓', '✓✓', '✓✓'] },
+    { label: 'Background reasoning', values: ['–', '–', '✓', '✓'] },
+    { label: 'Concurrent workloads', values: ['Standard', 'Standard', 'Heavy', 'Heaviest'] },
+    { label: 'Support', values: ['Standard', 'Standard', 'Priority', 'Priority'] },
+  ],
+};
 
 export const inEveryPlan: { name: string; body: string }[] = [
   { name: 'CripsisAI', body: 'Agents, workbench, and proactive attention.' },
