@@ -174,11 +174,62 @@
   animation: travel 5.5s linear infinite;
 }
 
+/* signal-field blocks — slow glow pulse */
+@keyframes signalpulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+.signal-pulse {
+  animation: signalpulse 4.5s ease-in-out infinite;
+}
+
+/* control-plane spine — dot travelling top → bottom */
+@keyframes travely {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+.travel-y {
+  animation: travely 4.2s ease-in-out infinite;
+}
+
+/* signal ticker — seamless marquee (track holds two copies) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blink,
   .crt-flicker,
   .halo::before,
-  .rail-travel::after {
+  .rail-travel::after,
+  .signal-pulse,
+  .travel-y,
+  .marquee-track {
     animation: none;
   }
   html {
