@@ -1,4 +1,5 @@
 import type { RailNode } from '@/components/marketing/NodeRail';
+import type { TermLine } from '@/components/marketing/LiveTerminal';
 
 export const railNodes: RailNode[] = [
   { label: 'Owned by you', sub: 'your asset · your walls', active: true },
@@ -115,4 +116,37 @@ export const faq: { q: string; a: string }[] = [
     q: 'How does a deployment start?',
     a: 'Narrow. One high-value workflow, one operating team, a small number of authorized sources. Observe, learn, demonstrate value, then expand — no six-month transformation project required first.',
   },
+];
+
+/** Hero CRT — the live "observe" sequence (types once on view, then holds). */
+export const heroTerminal: TermLine[] = [
+  { prefix: 'cripsis@enterprise ~ %', prefixTone: 'muted', text: 'observe', tone: 'heading' },
+  { prefix: '●', text: 'observing authorized activity — live' },
+  { prefix: '●', text: 'task episode assembled — 7 events' },
+  { prefix: '●', text: 'hypothesis formed — recovery pattern' },
+  { text: 'Cripsis asks', tone: 'accent', gap: true },
+  { text: '“does the path depend on service level?”' },
+  { prefix: '●', text: 'practice validated — confidence: high', gap: true },
+  { prefix: '○', prefixTone: 'dim', text: 'receipt recorded — trilithium' },
+  { prefix: 'cripsis@enterprise ~ %', prefixTone: 'muted', text: '', tone: 'muted', gap: true },
+];
+
+/** Contrast — the reactive "today" workflow that stalls. */
+export const todayTerminal: TermLine[] = [
+  { prefix: 'ops@today ~ %', prefixTone: 'muted', text: 'handle exception', tone: 'heading' },
+  { prefix: '●', prefixTone: 'dim', text: 'problem discovered while working the file', tone: 'muted' },
+  { prefix: '●', prefixTone: 'dim', text: 'reconstructing context across systems…', tone: 'muted' },
+  { prefix: '●', prefixTone: 'dim', text: 'options evaluated by hand · impact guessed', tone: 'muted' },
+  { prefix: '○', prefixTone: 'dim', text: 'reminder set — check back later', tone: 'muted' },
+  { text: '— interrupted', tone: 'muted', gap: true },
+];
+
+/** Contrast — the anticipatory Cripsis workflow. */
+export const cripsisTerminal: TermLine[] = [
+  { prefix: 'cripsis@enterprise ~ %', prefixTone: 'muted', text: 'anticipate', tone: 'heading' },
+  { prefix: '●', text: 'developing risk surfaced from authorized signals' },
+  { prefix: '●', text: 'context assembled · comparable prior cases' },
+  { prefix: '●', text: 'validated practice applied · options recommended' },
+  { prefix: '●', text: 'decision routed to authority' },
+  { prefix: '✓', text: 'monitoring continues', tone: 'accent', gap: true },
 ];

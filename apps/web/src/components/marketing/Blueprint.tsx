@@ -4,15 +4,18 @@ import { cn } from '@/lib/cn';
  * Blueprint framing overlay — a faint dashed cyan grid plus corner crop-marks,
  * giving sections a precise "engineering schematic" feel.
  *
- * Drop into a `relative overflow-hidden` parent. Purely decorative.
+ * `dense` raises grid visibility and adds `+` intersection ticks (used on the
+ * home hero). Drop into a `relative overflow-hidden` parent. Purely decorative.
  */
 export function Blueprint({
   grid = true,
   corners = true,
+  dense = false,
   className,
 }: {
   grid?: boolean;
   corners?: boolean;
+  dense?: boolean;
   className?: string;
 }) {
   return (
@@ -21,14 +24,9 @@ export function Blueprint({
       className={cn('pointer-events-none absolute inset-0 z-0', className)}
     >
       {grid ? (
-        <svg className="absolute inset-0 h-full w-full opacity-60">
+        <svg className={cn('absolute inset-0 h-full w-full', dense ? 'opacity-100' : 'opacity-60')}>
           <defs>
-            <pattern
-              id="bp-grid"
-              width="72"
-              height="72"
-              patternUnits="userSpaceOnUse"
-            >
+            <pattern id="bp-grid" width="72" height="72" patternUnits="userSpaceOnUse">
               <path
                 d="M72 0 H0 V72"
                 fill="none"
@@ -37,8 +35,21 @@ export function Blueprint({
                 strokeDasharray="3 7"
               />
             </pattern>
+            {dense ? (
+              <pattern id="bp-ticks" width="72" height="72" patternUnits="userSpaceOnUse">
+                <path
+                  d="M36 31 V41 M31 36 H41"
+                  fill="none"
+                  style={{ stroke: 'var(--color-accent-dim)' }}
+                  strokeWidth={1}
+                />
+              </pattern>
+            ) : null}
           </defs>
           <rect width="100%" height="100%" fill="url(#bp-grid)" />
+          {dense ? (
+            <rect width="100%" height="100%" fill="url(#bp-ticks)" className="opacity-70" />
+          ) : null}
         </svg>
       ) : null}
 

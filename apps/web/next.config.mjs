@@ -9,6 +9,9 @@ const nextConfig = {
   // Pin the workspace root (this monorepo) so Next ignores stray lockfiles
   // elsewhere on the machine.
   outputFileTracingRoot: join(__dirname, '../../'),
+  // Allow an isolated build output via NEXT_DIST_DIR so a throwaway verification
+  // server never collides with a `next start`/`next dev` already using `.next`.
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   // Proxy /api/* to the NestJS backend in development.
   async rewrites() {
     const apiUrl = process.env.API_URL ?? 'http://localhost:3001';
