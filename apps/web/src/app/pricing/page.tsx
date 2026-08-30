@@ -32,11 +32,15 @@ export default function PricingPage() {
       <PageHero
         tag="~/cripsis/pricing"
         kicker="pricing"
-        title="A dedicated environment for every team size."
+        title={
+          <>
+            <span className="text-muted">A dedicated environment for</span> every team
+            size.
+          </>
+        }
         subtitle="Every plan is a dedicated Cripsis environment — your own resident AI, your own intelligence. Persistent enterprise AI without shared customer intelligence or commodity SaaS dependence."
-        align="center"
       >
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex">
           <div className="inline-flex items-center gap-2 rounded-[3px] border border-line bg-bg-0 px-4 py-2.5 font-mono text-[13px] text-body">
             <span className="text-accent">❯</span> cripsis plans --dedicated
             <span className="blink">▍</span>

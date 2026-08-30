@@ -64,7 +64,8 @@ export default function PlatformPage() {
               <TechTag className="mb-5 block">~/cripsis/platform</TechTag>
               <Kicker>the platform</Kicker>
               <h1 className="mt-5 max-w-[640px] text-[clamp(38px,7vw,64px)] font-bold tracking-[-0.03em]">
-                Everything the enterprise needs to own its intelligence.
+                <span className="text-muted">Everything the enterprise needs to</span>{' '}
+                own its intelligence.
               </h1>
               <p className="mt-6 max-w-[560px] text-[18px] text-body">
                 One environment that observes, learns, remembers, governs, and operates —

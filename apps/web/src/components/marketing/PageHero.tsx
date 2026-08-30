@@ -2,6 +2,7 @@ import { Container } from '@/components/layout/Container';
 import { Kicker } from '@/components/ui/Kicker';
 import { TechTag } from '@/components/ui/TechTag';
 import { Blueprint } from '@/components/marketing/Blueprint';
+import { SignalField } from '@/components/marketing/SignalField';
 import { cn } from '@/lib/cn';
 
 /** Interior-page hero: blueprint frame + optional path tag + kicker + title +
@@ -27,7 +28,8 @@ export function PageHero({
   const centered = align === 'center';
   return (
     <div className="relative overflow-hidden border-b border-line bg-[radial-gradient(1100px_500px_at_18%_-8%,rgba(22,169,214,0.11),transparent_60%)]">
-      <Blueprint />
+      <Blueprint dense />
+      <SignalField />
       {scanlines ? (
         <div className="scanlines pointer-events-none absolute inset-0 z-0" aria-hidden />
       ) : null}
