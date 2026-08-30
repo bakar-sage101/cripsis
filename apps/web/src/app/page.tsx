@@ -39,7 +39,8 @@ export default function HomePage() {
               <TechTag className="mb-5 block">~/cripsis — the control plane</TechTag>
               <Kicker>the infrastructure of cognition</Kicker>
               <h1 className="mt-5 text-[clamp(44px,9vw,78px)] font-bold leading-[1.02] tracking-[-0.03em]">
-                Own the intelligence your business runs on.
+                Own the intelligence{' '}
+                <span className="text-muted">your business runs on.</span>
               </h1>
               <p className="mt-6 max-w-[520px] text-[18.5px] text-body">
                 A dedicated AI operating environment that learns how your organization
