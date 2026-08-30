@@ -1,0 +1,15 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 5800, "title": "Home", "expand": "fill" },
+    { "file": "Platform.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 3400, "expand": "fill" },
+    { "file": "About.dc.html", "x": 3120, "y": 0, "w": 1440, "h": 2500, "expand": "fill" },
+    { "file": "Pricing.dc.html", "x": 4680, "y": 0, "w": 1440, "h": 2600, "expand": "fill" },
+    { "file": "Contact.dc.html", "x": 6240, "y": 0, "w": 1440, "h": 1500, "expand": "fill" },
+    { "file": "DesignPartners.dc.html", "x": 7800, "y": 0, "w": 1440, "h": 3600, "title": "Design Partners", "expand": "fill" }
+  ],
+  "annotations": [
+    { "id": "note-brief", "x": 0, "y": -160, "w": 560, "text": "Cripsis — commandcode.ai content rhythm, Cripsis palette & voice. Pages: Home · Platform · About · Pricing · Contact · Design Partners. The design-partner CTAs (\"Become a design partner\" / \"Start with one workflow\") route to the new Design Partners page, built from the Design Partner Brief. Copy is a working draft." },
+    { "id": "note-dp", "x": 7800, "y": -160, "w": 520, "text": "NEW — Design Partners page: the full program detail (operating problem, what the engagement proves, the 90-day steps, what partners receive, control terms). This is where the design-partner CTAs land." }
+  ],
+  "launch": { "view": "focused", "file": "Main.dc.html" }
+}

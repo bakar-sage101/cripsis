@@ -1,0 +1,41 @@
+:root {
+  /* Cripsis brand tokens — from the Workbench shell palette */
+  --bg-0: #020608;
+  --bg-1: #040b10;
+  --bg-2: #07131a;
+  --blue-dim: #0c5f7d;
+  --blue-mid: #16a9d6;
+  --blue-bright: #68d8ff;
+  --text-bright: #d9f5ff;
+  --text-main: rgba(104, 216, 255, 0.88);
+  --text-muted: #4fa9c8;
+  --white: #ffffff;
+  --border: rgba(22, 169, 214, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-0);
+  color: var(--text-main);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--blue-mid);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--blue-bright);
+}

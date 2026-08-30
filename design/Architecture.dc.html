@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+    :root{
+      --bg0:#020608;--bg1:#040b10;--bg2:#07131a;
+      --dim:#0c5f7d;--mid:#16a9d6;--bright:#68d8ff;
+      --tb:#d9f5ff;--tm:rgba(104,216,255,.88);--tmut:#4fa9c8;--white:#ffffff;
+      --bd:rgba(22,169,214,.24);--bd2:rgba(22,169,214,.5);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg0);color:var(--tm);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:'Space Grotesk','IBM Plex Sans',sans-serif;color:var(--tb);margin:0;line-height:1.08;letter-spacing:-.015em;font-weight:600}
+    h2{font-size:42px}h3{font-size:20px}
+    p{margin:0}
+    a{color:var(--mid);text-decoration:none}a:hover{color:var(--bright)}
+    .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 56px}
+    .tag{font-family:'IBM Plex Mono',monospace;color:var(--tmut);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;display:inline-block}
+    .sub{color:var(--tm);font-size:19px;line-height:1.6}
+    .btn{font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:13px 22px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+    .btn-p{background:var(--bright);color:#04121a;font-weight:600;border:1px solid var(--bright)}
+    .rule{height:1px;background:var(--bd);border:0}
+  </style>
+</helmet>
+
+<div style="background:var(--bg0);min-height:100%;overflow:hidden">
+
+  <!-- NAV -->
+  <div style="border-bottom:1px solid var(--bd)">
+    <div class="wrap" style="height:70px;display:flex;align-items:center;justify-content:space-between">
+      <div style="font-family:'Space Grotesk',sans-serif;color:var(--tb);font-weight:600;font-size:20px;letter-spacing:.14em">CRIPSIS</div>
+      <div style="display:flex;align-items:center;gap:34px">
+        <a class="mono" style="font-size:13.5px;color:var(--bright)" href="#">Architecture</a>
+        <a class="mono" style="font-size:13.5px;color:var(--tmut)" href="#">Security</a>
+        <a class="mono" style="font-size:13.5px;color:var(--tmut)" href="#">Pricing</a>
+        <a class="mono" style="font-size:13.5px;color:var(--tmut)" href="#">About</a>
+        <a class="mono" style="font-size:13.5px;color:var(--tmut)" href="#">Contact</a>
+        <a class="btn btn-p" href="#">Become a design partner →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="wrap" style="padding:96px 56px 40px">
+    <span class="tag">[ the platform ]</span>
+    <h2 style="margin-top:22px;max-width:900px">Thinking, knowing, and allowing &mdash; kept apart on purpose.</h2>
+    <p class="sub" style="margin-top:24px;max-width:780px">The separation is the point. Each plane owns its responsibility and nothing else, so intelligence compounds while authority stays deterministic.</p>
+  </div>
+
+  <!-- SPLIT -->
+  <div class="wrap" style="padding-bottom:20px">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--bd);border-radius:4px;background:var(--bg2);overflow:hidden">
+      <div style="padding:30px;border-right:1px solid var(--bd)">
+        <div class="mono" style="font-size:12px;color:var(--tmut);letter-spacing:.16em">CRIPSISAI</div>
+        <h3 style="margin-top:12px;color:var(--bright);font-size:24px">Thinks.</h3>
+        <p style="margin-top:12px;font-size:14.5px;color:var(--tm)">Decides what should happen.</p>
+      </div>
+      <div style="padding:30px;border-right:1px solid var(--bd)">
+        <div class="mono" style="font-size:12px;color:var(--tmut);letter-spacing:.16em">KYBERNITE</div>
+        <h3 style="margin-top:12px;color:var(--bright);font-size:24px">Knows.</h3>
+        <p style="margin-top:12px;font-size:14.5px;color:var(--tm)">Owns what the enterprise knows.</p>
+      </div>
+      <div style="padding:30px">
+        <div class="mono" style="font-size:12px;color:var(--tmut);letter-spacing:.16em">TRILITHIUM</div>
+        <h3 style="margin-top:12px;color:var(--bright);font-size:24px">Allows.</h3>
+        <p style="margin-top:12px;font-size:14.5px;color:var(--tm)">Decides what is allowed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEEP SECTIONS -->
+  <div class="wrap" style="padding:56px 56px 0">
+    <!-- CripsisAI -->
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:40px;padding:44px 0;border-top:1px solid var(--bd)">
+      <div>
+        <div class="mono" style="font-size:12px;color:var(--tmut);letter-spacing:.16em">01 · CRIPSISAI</div>
+        <h3 style="margin-top:14px;font-size:30px;color:var(--tb)">Decides what<br>should happen.</h3>
+      </div>
+      <div>
+        <p class="sub" style="font-size:17px;color:var(--tm)">Observes authorized operational events, maintains active work that survives restarts, coordinates individual and organization-level agents, determines what deserves attention, assembles bounded context, invokes reasoning, generates recommendations, and asks questions when information is missing.</p>
+        <p class="mono" style="margin-top:20px;font-size:13.5px;color:var(--tmut)">// It does not own enterprise truth or authority.</p>
+      </div>
+    </div>
+    <!-- Kybernite -->
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:40px;padding:44px 0;border-top:1px solid var(--bd)">
+      <div>
+        <div class="mono" style="font-size:12px;color:var(--tmut);letter-spacing:.16em">02 · KYBERNITE</div>
+        <h3 style="margin-top:14px;font-size:30px;color:var(--tb)">Owns what the<br>enterprise knows.</h3>
+      </div>
+      <div>
+        <p class="sub" style="font-size:17px;color:var(--tm)">Turns experience into durable, governed, reusable, customer-owned intelligence: evidence, provenance, decisions and outcomes, validated practices, contradictions, and history. Every belief is traceable to why Cripsis holds it.</p>
+        <div class="mono" style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px">
+          <span style="color:var(--tmut)">lifecycle</span><span style="color:var(--dim)">›</span>
+          <span style="color:var(--tm)">CANDIDATE</span><span style="color:var(--dim)">→</span>
+          <span style="color:var(--tm)">VALIDATED</span><span style="color:var(--dim)">→</span>
+          <span style="color:var(--tm)">DISPUTED</span><span style="color:var(--dim)">→</span>
+          <span style="color:var(--tm)">SUPERSEDED</span>
+        </div>
+        <p class="mono" style="margin-top:18px;font-size:13.5px;color:var(--tmut)">// This is your asset, in your environment.</p>
+      </div>
+    </div>
+    <!-- Trilithium -->
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:40px;padding:44px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
+      <div>
+        <div class="mono" style="font-size:12px;color:var(--tmut);letter-spacing:.16em">03 · TRILITHIUM</div>
+        <h3 style="margin-top:14px;font-size:30px;color:var(--tb)">Decides what<br>is allowed.</h3>
+      </div>
+      <div>
+        <p class="sub" style="font-size:17px;color:var(--tm)">The deterministic trust plane. It answers one question on every action: is this permitted, with this information, through this route, under this authority, right now? Default-deny, deny-precedence, customer isolation, fail-closed. It produces a receipt for what happened.</p>
+        <div class="mono" style="margin-top:22px;border:1px solid var(--bd);border-radius:3px;background:var(--bg2);padding:18px 22px;font-size:13px;line-height:1.9">
+          <div><span style="color:var(--bright)">●</span> decision &nbsp;<span style="color:var(--bright)">permitted</span> &nbsp;<span style="color:var(--tmut)">· policy v— · receipt recorded</span></div>
+        </div>
+        <p class="mono" style="margin-top:18px;font-size:13.5px;color:var(--tmut)">// Control failure never becomes implicit permission.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCTRINE BAND -->
+  <div class="wrap" style="padding:56px 56px 96px">
+    <div class="mono" style="padding:24px;border:1px solid var(--bd);border-radius:3px;background:var(--bg1);text-align:center;font-size:14.5px;color:var(--tm)">
+      CripsisAI decides what should happen &nbsp;<span style="color:var(--dim)">·</span>&nbsp; Kybernite owns what is known &nbsp;<span style="color:var(--dim)">·</span>&nbsp; <span style="color:var(--bright)">Trilithium decides what is allowed.</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--bd);background:var(--bg0)">
+    <div class="wrap" style="padding:44px 56px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <span class="mono" style="font-size:12.5px;color:var(--tb);letter-spacing:.14em">CRIPSIS</span>
+      <span class="mono" style="font-size:12px;color:var(--tmut)">© Cripsis, Inc. &mdash; The Infrastructure of Cognition</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

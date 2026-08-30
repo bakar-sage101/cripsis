@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+    :root{
+      --bg0:#020608;--bg1:#040b10;--bg2:#07131a;
+      --dim:#0c5f7d;--mid:#16a9d6;--bright:#68d8ff;
+      --tb:#d9f5ff;--tm:rgba(104,216,255,.88);--tmut:#4fa9c8;--white:#ffffff;
+      --bd:rgba(22,169,214,.22);--bd2:rgba(22,169,214,.5);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg0);color:var(--tm);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:'Space Grotesk','IBM Plex Sans',sans-serif;color:var(--tb);margin:0;line-height:1.06;letter-spacing:-.015em;font-weight:600}
+    h1{font-size:48px}h3{font-size:17px}
+    p{margin:0}
+    a{color:var(--mid);text-decoration:none}a:hover{color:var(--bright)}
+    .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 48px}
+    .kick{font-family:'IBM Plex Mono',monospace;color:var(--tmut);font-size:13.5px}
+    .caret{color:var(--bright)}
+    .sub{color:var(--tm);font-size:18px;line-height:1.6}
+    .btn{font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:13px 20px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;text-decoration:none;justify-content:center}
+    .btn-p{background:var(--bright);color:#04121a;font-weight:600;border:1px solid var(--bright)}
+    .field{background:var(--bg0);border:1px solid var(--bd);border-radius:3px;padding:12px 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--tmut)}
+    .lbl{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--tmut);letter-spacing:.1em}
+    .opt{border:1px solid var(--bd);border-radius:4px;background:var(--bg2);padding:20px}
+    /* hover + motion */
+    .tile,.card,.opt,.tier{transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease,background-color .25s ease}
+    .tile:hover,.card:hover,.opt:hover,.tier:hover{border-color:var(--bd2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(2,6,8,.55),0 0 22px rgba(104,216,255,.07)}
+    .btn{transition:filter .2s ease,box-shadow .2s ease,transform .15s ease,border-color .2s ease,color .2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-p:hover{box-shadow:0 0 22px rgba(104,216,255,.45);filter:brightness(1.06)}
+    .btn-g:hover{border-color:var(--bright);color:var(--bright);box-shadow:0 0 16px rgba(104,216,255,.12)}
+  </style>
+</helmet>
+
+<div style="background:var(--bg0);min-height:100%;overflow:hidden">
+
+  <!-- NAV -->
+  <div style="border-bottom:1px solid var(--bd)">
+    <div class="wrap" style="height:66px;display:flex;align-items:center;justify-content:space-between;max-width:1180px">
+      <div style="font-family:'Space Grotesk',sans-serif;color:var(--tb);font-weight:600;font-size:19px;letter-spacing:.14em">CRIPSIS</div>
+      <div style="display:flex;align-items:center;gap:30px">
+        <a class="mono" style="font-size:13px;color:var(--tmut)" href="#">Platform</a>
+        <a class="mono" style="font-size:13px;color:var(--tmut)" href="#">Pricing</a>
+        <a class="mono" style="font-size:13px;color:var(--tmut)" href="#">About</a>
+        <a class="mono" style="font-size:13px;color:var(--bright)" href="#">Contact</a>
+        <a class="btn btn-p" href="#">Become a design partner →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="wrap" style="padding:80px 48px 40px">
+    <div class="kick"><span class="caret">//</span> contact</div>
+    <h1 style="margin-top:18px;max-width:760px">Tell us the workflow that costs you most when it fails.</h1>
+    <p class="sub" style="margin-top:22px;max-width:660px">A member of the team replies with a tailored path &mdash; baseline, instrument, measure. Start narrow; expand once it&rsquo;s proven.</p>
+  </div>
+
+  <!-- BODY: FORM + OPTIONS -->
+  <div class="wrap" style="padding:8px 48px 40px">
+    <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:22px">
+
+      <!-- BRIEF FORM -->
+      <div style="border:1px solid var(--bd2);border-radius:5px;background:var(--bg2);padding:30px">
+        <div class="mono" style="font-size:11.5px;color:var(--tmut);letter-spacing:.14em">CRIPSIS.BRIEF</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px">
+          <div><div class="lbl">WORK EMAIL *</div><div class="field" style="margin-top:8px">you@company.com</div></div>
+          <div><div class="lbl">ORGANIZATION</div><div class="field" style="margin-top:8px">Company</div></div>
+        </div>
+        <div style="margin-top:16px"><div class="lbl">ROLE</div><div class="field" style="margin-top:8px">Your role</div></div>
+        <div style="margin-top:16px"><div class="lbl">WHAT SHOULD CRIPSIS LEARN OR TAKE ON? *</div>
+          <div class="field" style="margin-top:8px;height:96px;color:var(--tmut)">The workflow that costs the most when it fails…</div>
+        </div>
+        <div style="margin-top:18px"><div class="lbl">URGENCY</div>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <span class="mono" style="font-size:12px;color:var(--tm);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">○ Exploring</span>
+            <span class="mono" style="font-size:12px;color:var(--tb);border:1px solid var(--bd2);border-radius:2px;padding:8px 13px"><span class="caret">●</span> This quarter</span>
+            <span class="mono" style="font-size:12px;color:var(--tm);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">○ Priority</span>
+          </div>
+        </div>
+        <a class="btn btn-p" style="margin-top:24px;width:100%" href="#">Send brief →</a>
+        <p class="mono" style="margin-top:14px;font-size:11.5px;color:var(--tmut)">A real person replies within one business day. Your information isn&rsquo;t shared.</p>
+      </div>
+
+      <!-- OPTION CARDS -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="opt">
+          <h3>Become a design partner</h3>
+          <p style="margin-top:8px;font-size:14px;color:var(--tm)">Shape early production deployments on one high-value workflow.</p>
+          <a class="mono" style="display:inline-block;margin-top:12px;font-size:13px" href="#">Start with one workflow →</a>
+        </div>
+        <div class="opt">
+          <h3>Talk to sales</h3>
+          <p style="margin-top:8px;font-size:14px;color:var(--tm)">Enterprise, government, or private-infrastructure deployments.</p>
+          <a class="mono" style="display:inline-block;margin-top:12px;font-size:13px" href="#">andrew@cripsis.com →</a>
+        </div>
+        <div class="opt">
+          <h3>General inquiry</h3>
+          <p style="margin-top:8px;font-size:14px;color:var(--tm)">Questions about the platform, security, or deployment.</p>
+          <a class="mono" style="display:inline-block;margin-top:12px;font-size:13px" href="#">cripsis.com →</a>
+        </div>
+        <div class="opt" style="background:var(--bg1)">
+          <div class="mono" style="font-size:11.5px;color:var(--tmut);letter-spacing:.12em">DIRECT</div>
+          <p class="mono" style="margin-top:10px;font-size:13px;color:var(--tm)">Text&nbsp; <span style="color:var(--bright)">1.760.802.4203</span></p>
+          <p class="mono" style="margin-top:6px;font-size:13px;color:var(--tm)">Email&nbsp; <span style="color:var(--bright)">andrew@cripsis.com</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--bd);background:var(--bg0);margin-top:40px">
+    <div class="wrap" style="padding:40px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1180px">
+      <span class="mono" style="font-size:12.5px;color:var(--tb);letter-spacing:.14em">CRIPSIS</span>
+      <span class="mono" style="font-size:12px;color:var(--tmut)">© Cripsis, Inc. &mdash; The Infrastructure of Cognition</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

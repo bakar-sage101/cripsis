@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+    :root{
+      --bg0:#020608;--bg1:#040b10;--bg2:#07131a;
+      --dim:#0c5f7d;--mid:#16a9d6;--bright:#68d8ff;
+      --tb:#d9f5ff;--tm:rgba(104,216,255,.88);--tmut:#4fa9c8;--white:#ffffff;
+      --bd:rgba(22,169,214,.22);--bd2:rgba(22,169,214,.5);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg0);color:var(--tm);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:'Space Grotesk','IBM Plex Sans',sans-serif;color:var(--tb);margin:0;line-height:1.06;letter-spacing:-.015em;font-weight:600}
+    h1{font-size:52px}h2{font-size:32px}h3{font-size:17px}
+    p{margin:0}
+    a{color:var(--mid);text-decoration:none}a:hover{color:var(--bright)}
+    .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+    .kick{font-family:'IBM Plex Mono',monospace;color:var(--tmut);font-size:13.5px}
+    .caret{color:var(--bright)}
+    .sub{color:var(--tm);font-size:18px;line-height:1.6}
+    .btn{font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:13px 22px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+    .btn-p{background:var(--bright);color:#04121a;font-weight:600;border:1px solid var(--bright)}
+    .tile{border:1px solid var(--bd);border-radius:4px;background:var(--bg2);padding:22px}
+    .catlead{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--tmut);letter-spacing:.16em}
+    .block{padding:56px 0;border-top:1px solid var(--bd)}
+    /* hover + motion */
+    .tile,.card,.opt,.tier{transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease,background-color .25s ease}
+    .tile:hover,.card:hover,.opt:hover,.tier:hover{border-color:var(--bd2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(2,6,8,.55),0 0 22px rgba(104,216,255,.07)}
+    .btn{transition:filter .2s ease,box-shadow .2s ease,transform .15s ease,border-color .2s ease,color .2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-p:hover{box-shadow:0 0 22px rgba(104,216,255,.45);filter:brightness(1.06)}
+    .btn-g:hover{border-color:var(--bright);color:var(--bright);box-shadow:0 0 16px rgba(104,216,255,.12)}
+  </style>
+</helmet>
+
+<div style="background:var(--bg0);min-height:100%;overflow:hidden">
+
+  <!-- NAV -->
+  <div style="border-bottom:1px solid var(--bd)">
+    <div class="wrap" style="height:66px;display:flex;align-items:center;justify-content:space-between">
+      <div style="font-family:'Space Grotesk',sans-serif;color:var(--tb);font-weight:600;font-size:19px;letter-spacing:.14em">CRIPSIS</div>
+      <div style="display:flex;align-items:center;gap:30px">
+        <a class="mono" style="font-size:13px;color:var(--bright)" href="#">Platform</a>
+        <a class="mono" style="font-size:13px;color:var(--tmut)" href="#">Pricing</a>
+        <a class="mono" style="font-size:13px;color:var(--tmut)" href="#">About</a>
+        <a class="mono" style="font-size:13px;color:var(--tmut)" href="#">Contact</a>
+        <a class="btn btn-p" href="#">Become a design partner →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="border-bottom:1px solid var(--bd);background:radial-gradient(1000px 440px at 20% -10%, rgba(22,169,214,.10), transparent 60%)">
+    <div class="wrap" style="padding:84px 48px 46px">
+      <div class="kick"><span class="caret">//</span> the platform</div>
+      <h1 style="margin-top:20px;max-width:820px">Everything the enterprise needs to own its intelligence.</h1>
+      <p class="sub" style="margin-top:22px;max-width:720px">One environment that observes, learns, remembers, governs, and operates &mdash; with clean boundaries between what thinks, what knows, and what is allowed.</p>
+      <!-- category strip -->
+      <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:34px">
+        <span class="mono" style="font-size:12px;color:var(--tb);border:1px solid var(--bd2);border-radius:2px;padding:8px 13px">Three planes</span>
+        <span class="mono" style="font-size:12px;color:var(--tmut);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">Active learning</span>
+        <span class="mono" style="font-size:12px;color:var(--tmut);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">Organizational memory</span>
+        <span class="mono" style="font-size:12px;color:var(--tmut);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">Trust &amp; control</span>
+        <span class="mono" style="font-size:12px;color:var(--tmut);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">Delegation</span>
+        <span class="mono" style="font-size:12px;color:var(--tmut);border:1px solid var(--bd);border-radius:2px;padding:8px 13px">Deployment</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-bottom:80px">
+
+    <!-- BLOCK 1: THREE PLANES -->
+    <div class="block" style="border-top:0">
+      <div class="catlead">01 · THREE PLANES</div>
+      <h2 style="margin-top:12px">Thinking, knowing, and allowing &mdash; kept apart.</h2>
+      <p class="sub" style="margin-top:14px;max-width:680px;font-size:16.5px">The separation is the point. Each plane owns its responsibility and nothing else.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px">
+        <div class="tile"><div class="mono" style="font-size:11.5px;color:var(--tmut);letter-spacing:.14em">CRIPSISAI · <span style="color:var(--bright)">THINKS</span></div><h3 style="margin-top:12px">Decides what should happen</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Observes authorized events, keeps active work, assembles context, reasons, recommends, and asks when information is missing.</p></div>
+        <div class="tile"><div class="mono" style="font-size:11.5px;color:var(--tmut);letter-spacing:.14em">KYBERNITE · <span style="color:var(--bright)">KNOWS</span></div><h3 style="margin-top:12px">Owns what the enterprise knows</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Evidence, provenance, decisions, outcomes, and validated practices &mdash; durable, inspectable, customer-owned.</p></div>
+        <div class="tile"><div class="mono" style="font-size:11.5px;color:var(--tmut);letter-spacing:.14em">TRILITHIUM · <span style="color:var(--bright)">ALLOWS</span></div><h3 style="margin-top:12px">Decides what is allowed</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Identity, authority, policy, approvals, and receipts. Default-deny, deny-precedence, customer isolation, fail-closed.</p></div>
+      </div>
+    </div>
+
+    <!-- BLOCK 2: ACTIVE LEARNING -->
+    <div class="block">
+      <div class="catlead">02 · ACTIVE LEARNING</div>
+      <h2 style="margin-top:12px">It learns from the bottom up &mdash; and asks.</h2>
+      <p class="sub" style="margin-top:14px;max-width:680px;font-size:16.5px">Repeated behavior is evidence, not truth. Written procedure is evidence, not gospel.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px">
+        <div class="tile"><h3 style="margin-top:2px">Observe &amp; correlate</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Normalizes authorized activity and infers which actions belong to one piece of work.</p></div>
+        <div class="tile"><h3 style="margin-top:2px">Hypothesize</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Forms a candidate explanation of how work is normally performed &mdash; held tentatively.</p></div>
+        <div class="tile"><h3 style="margin-top:2px">Question</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Initiates clarification on uncertainty, conflict, or an unexplained decision.</p></div>
+        <div class="tile"><h3 style="margin-top:2px">Validate</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Confirms with an authority, then records a practice with evidence and confidence.</p></div>
+      </div>
+    </div>
+
+    <!-- BLOCK 3: ORGANIZATIONAL MEMORY -->
+    <div class="block">
+      <div class="catlead">03 · ORGANIZATIONAL MEMORY</div>
+      <h2 style="margin-top:12px">More than conversation history.</h2>
+      <p class="sub" style="margin-top:14px;max-width:680px;font-size:16.5px">Memory is structured so a learned practice is inspectable &mdash; not opaque vectors.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px">
+        <div class="tile"><h3>Episodic memory</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">What happened in specific cases.</p></div>
+        <div class="tile"><h3>Operational knowledge</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Known entities, systems, terms, and relationships.</p></div>
+        <div class="tile"><h3>Practices</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">How work is normally performed.</p></div>
+        <div class="tile"><h3>Rules &amp; policies</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Explicit organizational requirements.</p></div>
+        <div class="tile"><h3>Exceptions</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Conditions under which a practice changes.</p></div>
+        <div class="tile"><h3>Evidence &amp; provenance</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Why Cripsis believes something &mdash; traceable to source.</p></div>
+      </div>
+    </div>
+
+    <!-- BLOCK 4: TRUST & CONTROL -->
+    <div class="block">
+      <div class="catlead">04 · TRUST &amp; CONTROL</div>
+      <h2 style="margin-top:12px">Your intelligence. Your authority. Your walls.</h2>
+      <p class="sub" style="margin-top:14px;max-width:680px;font-size:16.5px">The enterprise owns and controls its intelligence. Cripsis owns the infrastructure that governs it.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px">
+        <div class="tile"><h3>Ownership</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">The model, the data, and the learned intelligence stay yours.</p></div>
+        <div class="tile"><h3>Data never leaves</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Segregated in your environment; never used to improve anyone else&rsquo;s.</p></div>
+        <div class="tile"><h3>Deterministic authority</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Default-deny, fail-closed. Every action evaluated before it happens.</p></div>
+        <div class="tile"><h3>Provenance &amp; receipts</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Every belief traceable to evidence; every action produces a record.</p></div>
+        <div class="tile"><h3>You set the boundary</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">You authorize which systems and information Cripsis may access.</p></div>
+        <div class="tile"><h3>Human authority preserved</h3><p style="margin-top:10px;font-size:14px;color:var(--tm)">Learning how work is done does not authorize doing it.</p></div>
+      </div>
+    </div>
+
+    <!-- BLOCK 5: DELEGATION -->
+    <div class="block">
+      <div class="catlead">05 · DELEGATION</div>
+      <h2 style="margin-top:12px">A deliberately staged autonomy ramp.</h2>
+      <p class="sub" style="margin-top:14px;max-width:680px;font-size:16.5px">Assistance before autonomy. The agent proposes and learns; the control substrate decides.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px">
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--bright)">OBSERVE → ASK</div><p style="margin-top:12px;font-size:14px;color:var(--tm)">Learn the workflow; question ambiguous or conflicting behavior.</p></div>
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--bright)">ASSIST → COMPRESS</div><p style="margin-top:12px;font-size:14px;color:var(--tm)">Retrieve context, summarize, prioritize, draft; automate repetitive preparation.</p></div>
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--bright)">DELEGATE → OPERATE</div><p style="margin-top:12px;font-size:14px;color:var(--tm)">Perform bounded approved actions; continue recurring work within authority.</p></div>
+      </div>
+    </div>
+
+    <!-- BLOCK 6: DEPLOYMENT -->
+    <div class="block">
+      <div class="catlead">06 · DEPLOYMENT</div>
+      <h2 style="margin-top:12px">Install, authorize, observe, expand.</h2>
+      <p class="sub" style="margin-top:14px;max-width:680px;font-size:16.5px">No six-month transformation project first. The mess is part of what Cripsis learns to navigate.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px">
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--tmut)">01</div><h3 style="margin-top:10px">Install</h3><p style="margin-top:8px;font-size:14px;color:var(--tm)">Stand up a dedicated environment on your hardware or cloud.</p></div>
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--tmut)">02</div><h3 style="margin-top:10px">Authorize</h3><p style="margin-top:8px;font-size:14px;color:var(--tm)">Designate users, one workflow, and a small number of sources.</p></div>
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--tmut)">03</div><h3 style="margin-top:10px">Observe &amp; learn</h3><p style="margin-top:8px;font-size:14px;color:var(--tm)">Read-mostly at first; validated practice accumulates.</p></div>
+        <div class="tile"><div class="mono" style="font-size:12px;color:var(--tmut)">04</div><h3 style="margin-top:10px">Expand on proof</h3><p style="margin-top:8px;font-size:14px;color:var(--tm)">Broaden coverage and bounded write capability once value is shown.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div style="border-top:1px solid var(--bd);background:linear-gradient(180deg,var(--bg1),var(--bg0))">
+    <div class="wrap" style="padding:88px 48px;text-align:center">
+      <h2 style="font-size:38px">Prove it on one workflow.</h2>
+      <div style="margin-top:28px"><a class="btn btn-p" href="#">Become a design partner →</a></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--bd);background:var(--bg0)">
+    <div class="wrap" style="padding:40px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <span class="mono" style="font-size:12.5px;color:var(--tb);letter-spacing:.14em">CRIPSIS</span>
+      <span class="mono" style="font-size:12px;color:var(--tmut)">© Cripsis, Inc. &mdash; The Infrastructure of Cognition</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

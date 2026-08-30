@@ -1,0 +1,5 @@
+{
+  "//": "Root tsconfig for editor tooling only. Each app/package has its own.",
+  "extends": "./packages/typescript-config/base.json",
+  "files": []
+}
