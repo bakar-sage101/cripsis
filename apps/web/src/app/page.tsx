@@ -156,11 +156,17 @@ export default function HomePage() {
         <h2 className="mt-8 max-w-[720px] text-[clamp(26px,4vw,36px)] font-semibold leading-[1.14] tracking-[-0.02em]">
           Watch it observe, ask, and remember.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          {/* sticky terminal — the anchor that keeps focus */}
-          <div className="lg:sticky lg:top-[120px] lg:self-start">
-            <div className="crt-flicker overflow-hidden rounded-[6px] border border-line-strong bg-bg-2 shadow-[0_0_30px_rgba(104,216,255,0.06)]">
-              <div className="flex items-center gap-[7px] border-b border-line bg-bg-0 px-4 py-3">
+        <p className="mt-5 max-w-[680px] text-[17px] text-body">
+          Cripsis turns authorized work into a normalized stream, forms and validates
+          practices, and progressively assists — every belief inspectable, every action
+          gated.
+        </p>
+
+        {/* the live console — the "watch it work" moment */}
+        <div className="mt-10">
+          <div className="crt-flicker relative mx-auto max-w-[680px] overflow-hidden rounded-[8px] border border-line-strong bg-bg-2 shadow-[0_0_44px_rgba(104,216,255,0.08)]">
+            <div className="flex items-center justify-between border-b border-line bg-bg-0 px-4 py-3">
+              <div className="flex items-center gap-[7px]">
                 <span className="h-[9px] w-[9px] rounded-full bg-accent" />
                 <span className="h-[9px] w-[9px] rounded-full bg-accent-dim" />
                 <span className="h-[9px] w-[9px] rounded-full bg-accent-dim" />
@@ -168,32 +174,46 @@ export default function HomePage() {
                   cripsis@enterprise ~ %
                 </span>
               </div>
-              <div className="relative p-5">
-                <div className="scanlines pointer-events-none absolute inset-0" aria-hidden />
-                <LiveTerminal
-                  lines={heroTerminal}
-                  loop
-                  lineDelay={420}
-                  className="relative text-[12px] leading-[1.85]"
-                />
-              </div>
+              <span className="flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted">
+                <span className="signal-pulse h-1.5 w-1.5 rounded-full bg-accent" /> live
+              </span>
+            </div>
+            <div className="relative px-6 py-5">
+              <div className="scanlines pointer-events-none absolute inset-0" aria-hidden />
+              <LiveTerminal
+                lines={heroTerminal}
+                loop
+                lineDelay={420}
+                className="relative text-[12.5px] leading-[1.9]"
+              />
             </div>
           </div>
+        </div>
 
-          {/* the capability sequence — one focal beat at a time */}
-          <div>
-            {featureTiles.map((t) => (
+        {/* the six capabilities — a clean, even grid */}
+        <div className="mt-14 border-l border-t border-line">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {featureTiles.map((t, i) => (
               <Reveal
                 key={t.num}
-                className="border-t border-line py-7 first:border-t-0 first:pt-0"
+                delay={(i % 3) * 80}
+                className="relative overflow-hidden border-b border-r border-line p-6"
               >
-                <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[13px] tracking-[0.1em] text-accent">
-                    {t.num}
-                  </span>
-                  <h3 className="text-[clamp(20px,2.6vw,24px)]">{t.title}</h3>
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-1 -top-3 font-display text-[80px] font-bold leading-none tracking-[-0.04em] text-accent/[0.06]"
+                >
+                  {t.num}
+                </span>
+                <div className="relative">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-[12px] tracking-[0.1em] text-accent">
+                      {t.num}
+                    </span>
+                    <h3 className="text-[19px]">{t.title}</h3>
+                  </div>
+                  <p className="mt-2.5 text-[14px] text-body">{t.body}</p>
                 </div>
-                <p className="mt-2.5 pl-[36px] text-[15px] text-body">{t.body}</p>
               </Reveal>
             ))}
           </div>
