@@ -3,13 +3,12 @@ import { Section } from '@/components/marketing/Section';
 import { Button } from '@/components/ui/Button';
 import { Kicker } from '@/components/ui/Kicker';
 import { TechTag } from '@/components/ui/TechTag';
-import { CRTMonitor } from '@/components/marketing/CRTMonitor';
+import { PlaneGraph } from '@/components/marketing/PlaneGraph';
 import { NodeRail } from '@/components/marketing/NodeRail';
 import { Blueprint } from '@/components/marketing/Blueprint';
 import { Reveal } from '@/components/marketing/Reveal';
 import { StatBand } from '@/components/marketing/StatBand';
 import { SignalTicker } from '@/components/marketing/SignalTicker';
-import { LiveTerminal } from '@/components/marketing/LiveTerminal';
 import { ControlPlaneDiagram } from '@/components/marketing/ControlPlaneDiagram';
 import { ScrollProgress } from '@/components/marketing/ScrollProgress';
 import { ChapterMark } from '@/components/marketing/ChapterMark';
@@ -19,7 +18,6 @@ import {
   economics,
   economicsChain,
   faq,
-  heroTerminal,
 } from '@/content/home';
 
 export default function HomePage() {
@@ -81,19 +79,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* console centerpiece — on a glow stage, gently floating */}
+            {/* centerpiece — the three planes as a live node graph */}
             <div className="relative">
               <div className="floaty">
-                <CRTMonitor>
-                  <LiveTerminal
-                    lines={heroTerminal}
-                    lineDelay={380}
-                    className="text-[11px] leading-[1.72]"
-                  />
-                </CRTMonitor>
+                <PlaneGraph />
               </div>
-              <div className="mt-4 text-center font-mono text-[11.5px] text-muted">
-                <span className="text-accent">●</span> live session · cripsis@enterprise
+              <div className="mt-1 text-center font-mono text-[11.5px] text-muted">
+                <span className="text-accent">●</span> one environment · three planes ·
+                gated by construction
               </div>
             </div>
           </div>
@@ -159,48 +152,46 @@ export default function HomePage() {
       <Section id="how" tone="bg-1" signal className="scroll-mt-[120px]">
         <ChapterMark n="03" title="how it works" />
         <h2 className="mt-8 max-w-[720px] text-[clamp(26px,4vw,36px)] font-semibold leading-[1.14] tracking-[-0.02em]">
-          Watch it observe, ask, and remember.
+          It observes, asks, and remembers — on a loop.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          {/* sticky terminal — the anchor that keeps focus */}
-          <div className="lg:sticky lg:top-[120px] lg:self-start">
-            <div className="crt-flicker overflow-hidden rounded-[6px] border border-line-strong bg-bg-2 shadow-[0_0_30px_rgba(104,216,255,0.06)]">
-              <div className="flex items-center gap-[7px] border-b border-line bg-bg-0 px-4 py-3">
-                <span className="h-[9px] w-[9px] rounded-full bg-accent" />
-                <span className="h-[9px] w-[9px] rounded-full bg-accent-dim" />
-                <span className="h-[9px] w-[9px] rounded-full bg-accent-dim" />
-                <span className="ml-1 font-mono text-[11.5px] text-muted">
-                  cripsis@enterprise ~ %
-                </span>
-              </div>
-              <div className="relative p-5">
-                <div className="scanlines pointer-events-none absolute inset-0" aria-hidden />
-                <LiveTerminal
-                  lines={heroTerminal}
-                  loop
-                  lineDelay={420}
-                  className="relative text-[12px] leading-[1.85]"
-                />
-              </div>
-            </div>
+        <p className="mt-5 max-w-[680px] text-[17px] text-body">
+          Cripsis turns authorized work into a normalized stream, forms and validates
+          practices, and progressively assists — every belief inspectable, every action
+          gated.
+        </p>
+
+        <div className="relative mt-14">
+          {/* the operating spine — one signal gliding through the loop */}
+          <div className="absolute bottom-4 left-[19px] top-4 hidden w-px bg-[linear-gradient(180deg,transparent,rgba(104,216,255,0.4)_5%,rgba(104,216,255,0.4)_95%,transparent)] sm:block">
+            <span className="travel-y absolute -left-[3px] h-[7px] w-[7px] rounded-full bg-accent shadow-[0_0_10px_rgba(104,216,255,0.9)]" />
           </div>
 
-          {/* the capability sequence — one focal beat at a time */}
-          <div>
-            {featureTiles.map((t) => (
+          <div className="flex flex-col">
+            {featureTiles.map((t, i) => (
               <Reveal
                 key={t.num}
-                className="border-t border-line py-7 first:border-t-0 first:pt-0"
+                delay={i * 60}
+                className="grid grid-cols-1 gap-3 border-t border-line py-8 first:border-t-0 first:pt-0 sm:grid-cols-[40px_1fr] sm:gap-8"
               >
-                <div className="flex items-baseline gap-4">
-                  <span className="font-mono text-[13px] tracking-[0.1em] text-accent">
-                    {t.num}
-                  </span>
-                  <h3 className="text-[clamp(20px,2.6vw,24px)]">{t.title}</h3>
+                <div className="relative hidden justify-center sm:flex">
+                  <span className="mt-[7px] h-2.5 w-2.5 rounded-full border border-[rgba(104,216,255,0.55)] bg-accent shadow-[0_0_10px_rgba(104,216,255,0.7)]" />
                 </div>
-                <p className="mt-2.5 pl-[36px] text-[15px] text-body">{t.body}</p>
+                <div className="grid grid-cols-1 gap-2 md:grid-cols-[240px_1fr] md:gap-10">
+                  <div>
+                    <div className="font-mono text-[12px] tracking-[0.14em] text-accent">
+                      {t.num}
+                    </div>
+                    <h3 className="mt-1.5 text-[clamp(20px,2.4vw,24px)]">{t.title}</h3>
+                  </div>
+                  <p className="self-center text-[15px] text-body">{t.body}</p>
+                </div>
               </Reveal>
             ))}
+          </div>
+
+          <div className="mt-8 flex items-center gap-2 font-mono text-[13px] text-muted sm:pl-[48px]">
+            <span className="text-accent">↺</span> the loop never stops — every validation
+            feeds the next
           </div>
         </div>
       </Section>
