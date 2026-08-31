@@ -247,6 +247,10 @@
   .floaty {
     animation: none;
   }
+  /* SMIL-driven graph motion can't be stopped via animation:none */
+  .graph-pulse {
+    display: none;
+  }
   html {
     scroll-behavior: auto;
   }

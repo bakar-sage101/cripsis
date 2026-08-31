@@ -3,7 +3,7 @@ import { Section } from '@/components/marketing/Section';
 import { Button } from '@/components/ui/Button';
 import { Kicker } from '@/components/ui/Kicker';
 import { TechTag } from '@/components/ui/TechTag';
-import { CRTMonitor } from '@/components/marketing/CRTMonitor';
+import { PlaneGraph } from '@/components/marketing/PlaneGraph';
 import { NodeRail } from '@/components/marketing/NodeRail';
 import { Blueprint } from '@/components/marketing/Blueprint';
 import { Reveal } from '@/components/marketing/Reveal';
@@ -81,19 +81,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* console centerpiece — on a glow stage, gently floating */}
+            {/* centerpiece — the three planes as a live node graph */}
             <div className="relative">
               <div className="floaty">
-                <CRTMonitor>
-                  <LiveTerminal
-                    lines={heroTerminal}
-                    lineDelay={380}
-                    className="text-[11px] leading-[1.72]"
-                  />
-                </CRTMonitor>
+                <PlaneGraph />
               </div>
-              <div className="mt-4 text-center font-mono text-[11.5px] text-muted">
-                <span className="text-accent">●</span> live session · cripsis@enterprise
+              <div className="mt-1 text-center font-mono text-[11.5px] text-muted">
+                <span className="text-accent">●</span> one environment · three planes ·
+                gated by construction
               </div>
             </div>
           </div>
