@@ -1,9 +1,18 @@
-type GNode = { id: string; name: string; verb: string; sub: string; x: number; y: number };
+import { cn } from '@/lib/cn';
+
+type GNode = {
+  id: string;
+  name: string;
+  verb: string;
+  x: number;
+  y: number;
+  labelPos: 'above' | 'below';
+};
 
 const nodes: GNode[] = [
-  { id: 'thinks', name: 'CripsisAI', verb: 'Thinks', sub: 'reasons · recommends', x: 50, y: 11 },
-  { id: 'knows', name: 'Kybernite', verb: 'Knows', sub: 'evidence · memory', x: 13, y: 62 },
-  { id: 'allows', name: 'Trilithium', verb: 'Allows', sub: 'policy · receipts', x: 87, y: 62 },
+  { id: 'thinks', name: 'CripsisAI', verb: 'Thinks', x: 50, y: 18, labelPos: 'above' },
+  { id: 'knows', name: 'Kybernite', verb: 'Knows', x: 16, y: 70, labelPos: 'below' },
+  { id: 'allows', name: 'Trilithium', verb: 'Allows', x: 84, y: 70, labelPos: 'below' },
 ];
 
 const edges: [GNode, GNode][] = [
@@ -12,14 +21,14 @@ const edges: [GNode, GNode][] = [
   [nodes[1], nodes[2]],
 ];
 
-const CENTER = { x: 50, y: 45 };
+const CENTER = { x: 50, y: 52 };
 
 /** The hero centerpiece: the three planes as a live node graph — glowing nodes
  *  connected around a pulsing control-plane core, with signals travelling the
  *  edges. Motion (pulses / sonar / halos) is disabled under reduced-motion. */
 export function PlaneGraph() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[500px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[460px]">
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible">
         <defs>
           <filter id="pg-glow" x="-60%" y="-60%" width="220%" height="220%">
@@ -70,7 +79,7 @@ export function PlaneGraph() {
         ))}
 
         {/* control-plane core + sonar pulse */}
-        <circle cx={CENTER.x} cy={CENTER.y} r={2} fill="#68d8ff" opacity={0.65} filter="url(#pg-glow)" />
+        <circle cx={CENTER.x} cy={CENTER.y} r={1.9} fill="#68d8ff" opacity={0.7} filter="url(#pg-glow)" />
         <circle
           cx={CENTER.x}
           cy={CENTER.y}
@@ -85,22 +94,28 @@ export function PlaneGraph() {
         </circle>
       </svg>
 
-      {/* node labels */}
+      {/* nodes — dot pinned to the vertex, label above (top) or below (bottom) */}
       {nodes.map((n) => (
         <div
           key={n.id}
-          className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+          className="absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${n.x}%`, top: `${n.y}%` }}
         >
-          <span className="halo relative flex h-4 w-4 items-center justify-center rounded-full border border-[rgba(104,216,255,0.5)] bg-[radial-gradient(circle,rgba(104,216,255,0.5),rgba(4,11,16,0.9))] shadow-[0_0_18px_rgba(104,216,255,0.5)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          <span className="halo relative block h-3.5 w-3.5 rounded-full border border-[rgba(104,216,255,0.55)] bg-[rgba(104,216,255,0.14)] shadow-[0_0_14px_rgba(104,216,255,0.5)]">
+            <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent shadow-[0_0_6px_rgba(104,216,255,0.9)]" />
           </span>
-          <div className="mt-2.5 whitespace-nowrap text-center">
-            <div className="font-display text-[15px] font-semibold text-heading">{n.name}</div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+          <div
+            className={cn(
+              'absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-center',
+              n.labelPos === 'above' ? 'bottom-[calc(100%+9px)]' : 'top-[calc(100%+9px)]',
+            )}
+          >
+            <div className="font-display text-[15px] font-semibold leading-tight text-heading">
+              {n.name}
+            </div>
+            <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
               {n.verb}
             </div>
-            <div className="mt-0.5 font-mono text-[10px] text-muted">{n.sub}</div>
           </div>
         </div>
       ))}
