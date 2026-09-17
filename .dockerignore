@@ -1,0 +1,26 @@
+# Keep the Docker build context small and reproducible.
+# node_modules and build outputs are regenerated inside the image.
+**/node_modules
+**/.next
+**/dist
+**/build
+**/coverage
+**/.turbo
+.pnpm-store
+
+# git / editor / OS
+.git
+.github
+.idea
+.vscode
+**/.DS_Store
+*.swp
+
+# env files — never bake secrets into an image
+**/.env
+**/.env.*
+
+# docs and design assets not needed to run the site
+docs
+design
+*.md

@@ -6,6 +6,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Produce a self-contained server bundle (.next/standalone) so the Docker
+  // image can run the site with a minimal set of files — no full node_modules.
+  output: 'standalone',
   // Pin the workspace root (this monorepo) so Next ignores stray lockfiles
   // elsewhere on the machine.
   outputFileTracingRoot: join(__dirname, '../../'),

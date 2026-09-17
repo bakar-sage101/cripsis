@@ -1,0 +1,66 @@
+name: Deploy Web to Cloud Run
+
+# Runs only after code lands on main (i.e. after a PR is merged).
+# Pull requests do NOT deploy — they only run CI (ci.yml).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/web/**'
+      - 'packages/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch: {} # lets you trigger a deploy by hand from the Actions tab
+
+# ---------------------------------------------------------------------------
+# EDIT THESE to match your Google Cloud project.
+# (PROJECT_ID is not secret; the two auth values live in GitHub Secrets below.)
+# ---------------------------------------------------------------------------
+env:
+  PROJECT_ID: cripsis-prod
+  REGION: us-central1
+  REPO: cripsis # Artifact Registry repository name
+  SERVICE: cripsis-web # Cloud Run service name
+
+permissions:
+  contents: read
+  id-token: write # required to authenticate to GCP without a stored key (Workload Identity Federation)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Authenticate to Google Cloud using Workload Identity Federation (keyless).
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Let Docker push to Artifact Registry
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build and push the image
+        run: |
+          IMAGE="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${SERVICE}:${GITHUB_SHA}"
+          docker build -f apps/web/Dockerfile -t "$IMAGE" .
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy "$SERVICE" \
+            --image "$IMAGE" \
+            --region "$REGION" \
+            --platform managed \
+            --allow-unauthenticated \
+            --port 8080
+
+      - name: Show the live URL
+        run: |
+          gcloud run services describe "$SERVICE" --region "$REGION" \
+            --format='value(status.url)'
