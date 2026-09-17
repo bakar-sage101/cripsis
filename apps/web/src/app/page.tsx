@@ -12,12 +12,11 @@ import { SignalTicker } from '@/components/marketing/SignalTicker';
 import { ControlPlaneDiagram } from '@/components/marketing/ControlPlaneDiagram';
 import { ScrollProgress } from '@/components/marketing/ScrollProgress';
 import { ChapterMark } from '@/components/marketing/ChapterMark';
+import { EconomicsCurve } from '@/components/marketing/EconomicsCurve';
+import { QuestionsAnswered } from '@/components/marketing/QuestionsAnswered';
 import {
   railNodes,
   featureTiles,
-  economics,
-  economicsChain,
-  faq,
 } from '@/content/home';
 
 export default function HomePage() {
@@ -234,37 +233,18 @@ export default function HomePage() {
       </Section>
 
       {/* ─────────────────── 06 · THE ECONOMICS ───────────────── */}
-      <Section tone="bg-0">
+      <Section id="economics" tone="bg-0" className="scroll-mt-[96px]">
         <ChapterMark n="06" title="the economics" />
-        <h2 className="mt-8 max-w-[620px] text-[clamp(28px,4.6vw,44px)] font-semibold leading-[1.12] tracking-[-0.02em] text-muted">
-          Saving seconds <span className="text-heading">is just the start.</span>
+        <h2 className="mt-8 max-w-[680px] text-[clamp(42px,6.2vw,72px)] font-semibold leading-[1.04] tracking-[-0.035em] text-heading">
+          Saving seconds
+          <br />
+          <span className="text-accent-mid">is just the start.</span>
         </h2>
-        <p className="mt-6 max-w-[720px] text-[17px] text-body">
+        <p className="mt-7 max-w-[520px] text-[17px] text-body">
           As Cripsis learns, repeated steps collapse into delegated work. The unit of
           value shifts from time saved to human capacity released.
         </p>
-        <div className="mt-10 grid grid-cols-2 gap-3.5 lg:grid-cols-4">
-          {economics.map((e) => (
-            <div key={e.label} className="rounded-[4px] border border-line bg-bg-2 p-6">
-              <span className="font-mono text-[13px] tracking-[0.1em] text-accent">
-                {e.label}
-              </span>
-              <p className="mt-3 text-[14px] text-body">{e.body}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-4 flex flex-wrap items-center gap-2.5 rounded-[3px] border border-dashed border-line-strong bg-bg-1 px-5 py-4 font-mono text-[13px] text-body">
-          {economicsChain.map((step, i) => (
-            <span key={step} className="flex items-center gap-2.5">
-              <span className={i === economicsChain.length - 1 ? 'text-accent' : undefined}>
-                {step}
-              </span>
-              {i < economicsChain.length - 1 ? (
-                <span className="text-accent-dim">→</span>
-              ) : null}
-            </span>
-          ))}
-        </div>
+        <EconomicsCurve />
       </Section>
 
       {/* ─────────────────────── THE CLOSE ────────────────────── */}
@@ -289,20 +269,7 @@ export default function HomePage() {
       </div>
 
       {/* ───────────────────────── FAQ ────────────────────────── */}
-      <Section tone="bg-1">
-        <ChapterMark n="—" title="questions, answered" />
-        <div className="mt-9">
-          {faq.map((item, i) => (
-            <div
-              key={i}
-              className={`grid grid-cols-1 gap-4 border-t border-line py-6 md:grid-cols-[0.9fr_1.1fr] md:gap-8 ${i === faq.length - 1 ? 'border-b' : ''}`}
-            >
-              <h3 className="text-[18px]">{item.q}</h3>
-              <p className="text-[15px] text-body">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <QuestionsAnswered />
     </>
   );
 }

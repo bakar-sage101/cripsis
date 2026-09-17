@@ -236,6 +236,39 @@
   animation: floaty 7s ease-in-out infinite;
 }
 
+/* economics curve — one signal compounds from assistance into bounded operation */
+@keyframes economicsdraw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.economics-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: economicsdraw 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes economicstravel {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+.economics-travel {
+  animation: economicstravel 5.5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blink,
   .crt-flicker,
@@ -246,6 +279,11 @@
   .marquee-track,
   .floaty {
     animation: none;
+  }
+  .economics-draw,
+  .economics-travel {
+    animation: none;
+    stroke-dashoffset: 0;
   }
   /* SMIL-driven graph motion can't be stopped via animation:none */
   .graph-pulse {
